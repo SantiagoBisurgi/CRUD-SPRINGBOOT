@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>AppTareas</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+	
+	<a th:href="@{/newtarea}" class="btn btn-primary mb-4">+Agregar tarea</a>
+
+
+	<table class="table">
+	
+	<thead>
+	
+	<tr>
+	
+	<th>Id</th>
+	<th>Sector</th>
+	<th>Área</th>
+	<th>Titulo</th>
+	<th>Detalle</th>
+	<th></th>
+	
+	</tr>
+	
+	</thead>
+	
+	<tbody>
+	
+	<tr th:each="tarea:${tareas}">
+	
+	<td th:text="${tarea.id}"></td>
+	<td th:text="${tarea.sector}"></td>
+	<td th:text="${tarea.area}"></td>
+	<td th:text="${tarea.titulo}"></td>
+	<td th:text="${tarea.detalles}"></td>
+	<td>
+		<a th:href="@{/editartarea/}+${tarea.id}" class="btn btn-warning">Editar</a>
+		<a th:onclick="eliminar([[${tarea.id}]])" class="btn btn-danger">Eliminar</a>
+	</td>
+		
+	</tr>
+	
+	</tbody>
+	
+	
+	</table>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="funciones.js"></script>
+
+</body>
+</html>
